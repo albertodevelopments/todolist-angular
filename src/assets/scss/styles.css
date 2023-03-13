@@ -1,0 +1,66 @@
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --light-blue: #eaf4fb;
+    --light: #feffff;
+    --light-purple: #d7d9e7;
+    --light-green: #8db591;
+    --green: #8db591;
+    --light-reddish: #ffc9c1;
+    --reddish: #ffafa3;
+
+    --red: #d17b7b;
+    
+    --light-violet: #838aac;
+    --violet: #697394;
+    --light-gray: #e9e6e6;
+    --gray: #acacaf;
+}
+
+.input-text{
+    padding: .6rem .4rem;
+    border-radius: .4rem;
+    border: 1px solid var(--light-gray);
+    height: 2.5rem; 
+}
+
+.input-text:focus{
+    border: 2px solid var(--violet); 
+    outline: none;
+}
+
+.input-text::placeholder{
+    color: var(--gray);
+}
+
+.--input-error,
+.--input-error:focus{
+    outline: 2px solid var(--red); 
+}
+
+.button{
+    background-color: transparent;
+    border-radius: 5rem;
+    padding: .45rem .75rem;
+    text-transform: uppercase;                
+    outline: none;
+    font-weight: 700;
+    transition: color .4s, background-color .4s;
+}
+
+.spinner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

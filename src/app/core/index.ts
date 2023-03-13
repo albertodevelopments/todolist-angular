@@ -1,0 +1,1 @@
+export { app, auth } from '@core/api/firebaseConfig'

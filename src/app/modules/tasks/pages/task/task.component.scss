@@ -1,0 +1,70 @@
+.task{
+    border-top: 1px solid var(--light-gray);
+    padding-top: 1rem;
+
+    .task-panel{
+        width: 100%;
+        height: 100%;
+        
+        .title{
+            margin: 0 0 2rem 0;
+            padding: 0;
+        }
+
+        .input-group{
+            .description{
+                width: 100%;
+                margin-top: .8rem;
+            }
+
+            .error-message{
+                display: block;
+                margin-top: .5rem;
+                color: var(--red);                
+            }
+        }
+
+        .label{
+            display: block;
+            font-weight: 700;
+            font-size: 1.2em;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .progress-group{
+            margin-bottom: 3rem;
+
+            .slider{
+                display: inline-block;
+                width: 90%;
+            }
+
+            .progress-amount{
+                color: var(--violet);
+                font-weight: 700;
+                font-size: 1.2em;
+            }
+        }
+
+        .btn-submit{
+            width: 100%;
+            color: var(--light-green);
+            border: 2px solid var(--light-green);
+        }
+
+        .btn-submit:hover:enabled{
+            color: var(--light);
+            background: var(--green);
+            cursor: pointer;
+        }
+
+        .btn-submit:disabled{
+            cursor: not-allowed;
+            color: var(--light);
+            background-color: var(--light-gray);
+            border: 2px solid var(--light-gray);
+            
+        }
+    }
+}

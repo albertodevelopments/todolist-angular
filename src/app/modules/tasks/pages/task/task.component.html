@@ -1,0 +1,40 @@
+<div class="task">
+    <div class="task-panel">
+        <form 
+            [formGroup]="taskForm"
+            (ngSubmit)="saveTask()"
+        >
+            <h1 *ngIf="config.data.currentTask" class="title">Let´s edit your task!</h1>
+            <h1 *ngIf="!config.data.currentTask" class="title">Let´s create a new Task!</h1>
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    class="input-text description" 
+                    placeholder="Enter the task name"
+                    formControlName="description"
+                    [ngClass]="{'--input-error': (description.touched || description.dirty) && description.invalid}"
+                >
+                <small 
+                    *ngIf="(description.touched || description.dirty) && description.errors?.['required']"
+                    class="error-message">Please, enter a task description
+                </small>
+            </div>
+            <div class="progress">
+                <label class="label">Drag to select your current progress</label>
+                <div class="progress-group">
+                    <p-slider 
+                        class="slider" 
+                        formControlName="progress"
+                        [style]="{width: '80%'}"></p-slider>
+                    <span class="progress-amount">{{taskForm.value.progress}}%</span>
+                </div>
+            </div>
+            <button 
+                [disabled]="!taskForm.valid"
+                type="submit" 
+                class="button btn-submit"
+                (click)="getEvent($event)"
+            >submit</button>
+        </form>
+    </div>
+</div>

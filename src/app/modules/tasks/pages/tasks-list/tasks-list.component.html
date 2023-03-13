@@ -1,0 +1,81 @@
+<div class="taskslist">
+    <div class="container">
+        <div class="header">
+            <div class="title-block">
+                <img src="../../../assets/img/icon.jpg" alt="Icon" class="icon">
+                <h1 class="title">See your tasks...</h1>
+            </div>
+            <div class="actions">
+                <button class="button add-task" (click)="addTask()">add new</button>
+                <button class="button sign-out" (click)="signout()">sign out</button>
+            </div>
+        </div>
+        <div class="hero">
+            <h2 class="welcome">Welcome back!</h2>
+        </div>
+        <ul class="tasks" *ngIf="!loading">
+            <li class="task" *ngFor="let task of tasksList">
+                <div class="taskname-group">
+                    <svg 
+                        class="complete" 
+                        [ngClass]="{'complete--uncheck': task.completed}"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        (click)="toggleCompleteTask(task)"
+                    >
+                        <title>{{task.completed ? 'Uncheck' : 'Mark as completed'}}</title>
+                        <path d="m10 15.586-3.293-3.293-1.414 1.414L10 18.414l9.707-9.707-1.414-1.414z"
+                    ></path></svg>
+                    <span 
+                        class="taskname"
+                        [ngClass]="{'taskname--completed': task.completed}"
+                    >{{task.description}}</span>
+                </div>
+                <p-slider 
+                    [(ngModel)]="task.progress"
+                    class="slider" 
+                    [style]="{height: '.75rem', borderRadius: '1rem', width: '80%'}"
+                    [disabled]="true"
+                    [pTooltip]="task.progress + '%'"
+                    tooltipPosition="top"
+                ></p-slider>
+                <div class="actions">
+                    <button class="button edit" (click)="editTask(task)">edit</button>
+                    <button 
+                        class="button delete" 
+                        (click)="confirmDelete(task, $event)" 
+                    >delete</button>
+                </div>
+            </li>
+        </ul>
+        <p-progressSpinner 
+            *ngIf="loading"
+            class="spinner"
+        ></p-progressSpinner>
+        <p-paginator             
+            #paginator
+            [first]="firstPage" 
+            [rows]="linesPerPage"
+            [totalRecords]="totalRecords"
+            [pageLinkSize]="0"
+            (onPageChange)="paginate($event)"
+        ></p-paginator>
+        
+    </div>
+    <app-task-dialog 
+        #dialogWindow
+        *ngIf="dialogShown"
+        [currentTask]="currentTask"
+        (showModal)="toggleModalDialog($event)"
+        (getTasks)="getTasks(0, $event)"
+        (resetToFirstPage)="resetToFirstPage($event)"
+        (showMessage)="showMessage($event)"
+    ></app-task-dialog>    
+</div>
+<p-toast></p-toast>
+<p-confirmDialog></p-confirmDialog>
+
+
+
+
+
+

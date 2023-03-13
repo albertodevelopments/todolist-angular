@@ -1,0 +1,54 @@
+<div class="login">
+    <div class="login-box">
+        <h1 class="title">Please log in</h1>
+        <form 
+            class="login-form"
+            [formGroup]="loginForm"
+            (ngSubmit)="login()"
+        >
+            <div class="input-group">
+                <input 
+                    type="email" 
+                    class="input-text login-input" 
+                    placeholder="Enter your e-mail"
+                    formControlName="email"
+                    [ngClass]="{'--input-error': email.invalid && (email.dirty || email.touched) && email.errors?.['required']}"
+                >
+                <small 
+                    *ngIf="email.invalid && (email.dirty || email.touched) && email.errors?.['required']"
+                    class="error-message"
+                >Please, enter your email!</small>    
+                <small 
+                    *ngIf="email.errors?.['email']"
+                    class="error-message">Please, enter a valid e-mail address!
+                </small>
+            </div>
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    class="input-text login-input" 
+                    placeholder="Enter a password"
+                    formControlName="password"
+                    [ngClass]="{'--input-error': password.invalid && (password.dirty || password.touched) && password.errors?.['required']}"
+                >
+                <small 
+                    *ngIf="password.invalid && (password.dirty || password.touched) && password.errors?.['required']"
+                    class="error-message"
+                >Please, enter a password!</small> 
+            </div>
+            <button 
+                [disabled]="!loginForm.valid"
+                type="submit" 
+                class="btn-submit"
+            >
+                go!
+            </button>
+        </form>
+        <div class="footer">
+            <button class="btn btn-signup" (click)="goSignUp()">sign up</button>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>
+
+

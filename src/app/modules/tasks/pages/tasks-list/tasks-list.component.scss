@@ -1,0 +1,189 @@
+.taskslist{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: var(--light-blue);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .container{
+        width: 70%;
+        min-height: 600px;
+        background-color: var(--light);
+        border: 3px solid var(--light-purple);
+        border-radius: 1rem;
+        padding: 2rem;
+        -webkit-box-shadow: -1px 3px 25px 2px rgba(0,0,0,0.39);
+        -moz-box-shadow: -1px 3px 25px 2px rgba(0,0,0,0.39);
+        box-shadow: -1px 3px 25px 2px rgba(0,0,0,0.39);
+
+        .header{
+            display: flex;
+            width: 100%;
+            height: 8rem;
+            justify-content: space-between;
+            align-items: center;
+
+            .title-block{
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+
+                .title{
+                    font-weight: 500;
+                    font-size: 3em;
+                    font-weight: 800;
+                }
+
+                .icon{
+                    border: 3px solid var(--light-purple);
+                    padding: 2px;
+                    width: 100px;
+                    border-radius: 50%;
+                }
+            }
+
+            .actions{
+                display: flex;
+                gap: .5rem;
+
+                .add-task{
+                    color: var(--light-violet);
+                    border: 2px solid var(--light-violet);
+                }
+
+                .add-task:hover{
+                    color: var(--light);
+                    background: var(--violet);
+                    cursor: pointer;
+                }
+
+                .sign-out{
+                    color: var(--light);
+                    background: var(--reddish);                    
+                    border: 2px solid var(--light-reddish);
+                }
+
+                .sign-out:hover{
+                    color: var(--light-reddish);
+                    background: transparent;
+                    cursor: pointer;
+                }
+            }
+
+        }
+
+        .hero{
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--light-gray);
+            align-items: center;
+            padding-top: 0.5rem;
+
+            .welcome{
+                color: var(--gray);                
+            }
+        }
+
+        .tasks{
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+
+            .task{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1rem 1.25rem;
+                border: 2px solid var(--light-gray);
+                border-radius: 1rem;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+
+                .taskname-group{
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+
+                    .taskname{
+                        display: inline-block;
+                        font-size: 1.5em;
+                        font-weight: 500;
+                    }
+
+                    .taskname--completed{
+                        text-decoration: line-through;
+                        color: var(--violet);
+                        font-style: italic;
+                    }
+
+                    .complete{
+                        border: 2px solid var(--green);
+                        border-radius: 50%;
+                        fill: var(--green);
+                        transition: color .4s, background-color .4s;
+                    }
+
+                    .complete:hover{
+                        cursor: pointer;
+                        background-color: var(--light-green);
+                        fill: var(--light);
+                    }
+
+                    .complete--uncheck{
+                        border: 2px solid var(--violet);
+                        border-radius: 50%;
+                        fill: var(--violet);
+                    }
+
+                    .complete--uncheck:hover{
+                        border: 2px solid var(--light-violet);
+                        background-color: var(--light-violet);
+                        fill: var(--light);
+                    }
+                }
+
+                .slider{
+                    flex: 1;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .actions{
+                    display: flex;
+                    gap: 0.5rem;
+                    align-items: center;
+
+                    .edit{
+                        color: var(--light-green);
+                        border: 2px solid var(--light-green);
+                    }
+    
+                    .edit:hover{
+                        color: var(--light);
+                        background: var(--green);
+                        cursor: pointer;
+                    }
+
+                    .delete{
+                        color: var(--light-reddish);                        
+                        border: 2px solid var(--light-reddish);
+                    }
+    
+                    .delete:hover{
+                        color: var(--light);
+                        background: var(--reddish);                    
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.modal-dialog{
+    width: 50vw;
+
+}

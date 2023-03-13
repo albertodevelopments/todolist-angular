@@ -1,0 +1,89 @@
+<div class="signup">
+    <div class="signup-box">
+        <h1 class="title">Sign up</h1>
+        <form 
+            class="signup-form"
+            [formGroup]="signupForm"
+            (ngSubmit)="signup()"
+            >
+            <div class="input-group">
+                <input 
+                    type="text" 
+                    name="name"
+                    class="input-text --input-error signup-input" 
+                    placeholder="Enter your name"
+                    formControlName="name"
+                    [ngClass]="{'--input-error': name.invalid && (name.dirty || name.touched) && name.errors?.['required']}"
+                >
+                <small 
+                    *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['required']"
+                    class="error-message"
+                >Please, enter your name!</small> 
+            </div>
+            <div class="input-group">
+                <input 
+                    type="email" 
+                    class="input-text signup-input" 
+                    placeholder="Enter your e-mail"
+                    formControlName="email"
+                    [ngClass]="{'--input-error': email.invalid && (email.dirty || email.touched)}"
+                >
+                <small 
+                    *ngIf="email.invalid && (email.dirty || email.touched) && email.errors?.['required']"
+                    class="error-message">Please, enter an e-mail address!</small>
+                <small 
+                    *ngIf="email.errors?.['email']"
+                    class="error-message">Please, enter a valid e-mail address!
+                </small>
+            </div>
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    class="input-text signup-input" 
+                    placeholder="Enter a password"
+                    formControlName="password"
+                    [ngClass]="{'--input-error': password.invalid && (password.dirty || password.touched)}" 
+                >
+                <small 
+                    *ngIf="password.invalid && (password.dirty || password.touched) && password.errors?.['required']"
+                    class="error-message">Please, enter your password!</small>
+                <small 
+                    *ngIf="password.invalid && (password.dirty || password.touched) && password.errors?.['minlength']"
+                    class="error-message">Passwords should have at least 6 characters!</small>
+            </div>
+            <div class="input-group">
+                <input 
+                    type="password" 
+                    class="input-text signup-input --input-error" 
+                    placeholder="Confirm password"
+                    formControlName="confirmPassword"
+                    [ngClass]="{'--input-error': (confirmPassword.invalid || signupForm.errors?.['passwordsMustMatch']) && (confirmPassword.dirty || confirmPassword.touched)}"
+                >
+                <small 
+                    *ngIf="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched) && confirmPassword.errors?.['required']"
+                    class="error-message">Please, confirm your password!
+                </small>       
+                <ng-container *ngIf="!confirmPassword.errors?.['required']">
+                    <small 
+                        *ngIf="(confirmPassword.dirty || confirmPassword.touched) && signupForm.errors?.['passwordsMustMatch']"
+                        class="error-message">Passwords don't match!
+                    </small>
+                </ng-container>  
+                <small 
+                    *ngIf="signupForm.invalid && signupForm.errors?.['requestResponseError']"
+                    class="error-message">{{signUpErrorMessage.errorDescription}}
+                </small>           
+            </div>
+            <button 
+                [disabled]="!signupForm.valid"
+                type="submit" 
+                class="btn-submit">
+                Go!
+            </button>
+        </form>
+        <div class="footer">
+            <button class="btn btn-login" (click)="goLogin()">login</button>
+        </div>
+    </div>
+</div>
+<p-toast></p-toast>
